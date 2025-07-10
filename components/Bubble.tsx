@@ -1,14 +1,28 @@
 "use client";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
-type BubbleProps = {
+type BubbleProps = {};
+
+type BubbleData = {
+  top: number;
+  left: number;
   size: number;
-  cursorPosition?: { x: number; y: number };
 };
 
-const Bubble = ({ size }: BubbleProps) => {
-  const randomOffset = Math.random() * 2;
-  const oneOrZero = Math.random() < 0.5 ? 0 : 1;
+const Bubble = ({}: BubbleProps) => {
+  const [bubble, setBubble] = useState<BubbleData | null>(null);
+
+  useEffect(() => {
+    const top = Math.random() * 100;
+    const left = Math.random() * 100;
+    const size = 40 + Math.random() * 60;
+    setBubble({ top, left, size });
+  }, []);
+
+  if (!bubble) {
+    return null; // Prevent rendering until bubble data is initialized
+  }
 
   const randomThemeColors = [
     "rgb(17, 24, 39)", // --color-neutral-50
@@ -32,23 +46,26 @@ const Bubble = ({ size }: BubbleProps) => {
     <motion.div
       className="bg-blue-400 rounded-full shadow-lg absolute justify-center items-center flex text-brand-200 font-bold"
       style={{
-        width: size,
-        height: size,
-        fontSize: size / 2.5,
+        width: bubble.size,
+        height: bubble.size,
+        fontSize: bubble.size / 2.5,
         color: randomColor(),
+        top: bubble.top + "%",
+        left: bubble.left + "%",
+        position: "absolute",
       }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{
-        opacity: 1,
+        opacity: 0.8,
         scale: 1,
-        y: [20, -10, 0, 20, 20],
-        x: [0, 50, 0, -56, 0],
+        y: [10, -10, 0, 20, 10],
+        x: [0, 5, 0, -5, 0],
       }}
       transition={{
-        duration: 4 + randomOffset,
+        duration: 4 + Math.random() * 2,
         repeat: Infinity,
         ease: "easeInOut",
-        repeatDelay: randomOffset,
+        repeatDelay: Math.random() * 2,
       }}
       whileHover={{
         scale: 1.3,
@@ -56,7 +73,7 @@ const Bubble = ({ size }: BubbleProps) => {
       }}
     >
       <span style={{ transform: `rotate(${Math.random() * 360}deg)` }}>
-        {oneOrZero}
+        {Math.random() < 0.5 ? 0 : 1}
       </span>
     </motion.div>
   );

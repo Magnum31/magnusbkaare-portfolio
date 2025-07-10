@@ -2,7 +2,7 @@ import Bubble from "@/components/Bubble";
 import BubbleBackground from "@/components/BubbleBackground";
 
 export default function Home() {
-  const bubbleCount = 50;
+  const bubbleCount = 100;
 
   return (
     <main className="grid grid-rows-[20px_1fr_20px]  min-h-screen p-8 pb-10 gap-16 sm:p-20 font-body text-default-font relative overflow-hidden">
