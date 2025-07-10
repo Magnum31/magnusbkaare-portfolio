@@ -1,4 +1,3 @@
-import Bubble from "@/components/Bubble";
 import BubbleBackground from "@/components/BubbleBackground";
 
 export default function Home() {

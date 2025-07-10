@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import Bubble from "./Bubble";
 
 export default function BubbleBackground({ count }: { count: number }) {

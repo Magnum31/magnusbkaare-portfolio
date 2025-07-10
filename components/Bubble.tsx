@@ -2,15 +2,13 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
-type BubbleProps = {};
-
 type BubbleData = {
   top: number;
   left: number;
   size: number;
 };
 
-const Bubble = ({}: BubbleProps) => {
+const Bubble = () => {
   const [bubble, setBubble] = useState<BubbleData | null>(null);
 
   useEffect(() => {
@@ -21,7 +19,7 @@ const Bubble = ({}: BubbleProps) => {
   }, []);
 
   if (!bubble) {
-    return null; // Prevent rendering until bubble data is initialized
+    return null;
   }
 
   const randomThemeColors = [
