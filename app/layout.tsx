@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BubbleBackground from "@/components/BubbleBackground";
 
 export const metadata: Metadata = {
   title: "Magnus Bodholdt Kaare | Portfolio",
@@ -16,6 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <BubbleBackground count={100} />
+
         <Header />
         <main className="flex-grow mx-auto p-6">{children}</main>
         <Footer />

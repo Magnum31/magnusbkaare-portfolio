@@ -42,7 +42,7 @@ const Bubble = () => {
 
   return (
     <motion.div
-      className="bg-blue-400 rounded-full shadow-lg absolute justify-center items-center flex text-brand-200 font-bold"
+      className="bg-blue-400 rounded-full absolute justify-center items-center flex text-brand-200 font-bold"
       style={{
         width: bubble.size,
         height: bubble.size,
@@ -51,6 +51,13 @@ const Bubble = () => {
         top: bubble.top + "%",
         left: bubble.left + "%",
         position: "absolute",
+        border: "1px solid rgba(255, 255, 255, 0.4)",
+        background: "radial-gradient(circle at 30% 30%, #60a5fa, #3b82f6)",
+        boxShadow: `inset 0 0 ${
+          bubble.size / 6
+        }px rgba(255, 255, 255, 0.4),0 0 ${
+          bubble.size / 4
+        }px rgba(96, 165, 250, 0.6)`, //glow
       }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{
@@ -70,6 +77,18 @@ const Bubble = () => {
         rotate: 10,
       }}
     >
+      <span
+        style={{
+          position: "absolute",
+          top: "18%",
+          left: "20%",
+          width: "30%",
+          height: "30%",
+          background: "rgba(255, 255, 255, 0.3)",
+          borderRadius: "50%",
+          filter: "blur(6px)",
+        }}
+      />
       <span style={{ transform: `rotate(${Math.random() * 360}deg)` }}>
         {Math.random() < 0.5 ? 0 : 1}
       </span>
